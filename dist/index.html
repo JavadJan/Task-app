@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./style.css">
+
+    <!-- font  -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Poppins:wght@100;200&display=swap"
+        rel="stylesheet">
+    <!-- end font -->
+
+    <!-- icon dependency -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <title>ToDo</title>
+</head>
+
+<body>
+    <div id="root">
+        <h3 class="title">
+            <i class="uil uil-arrow-left"></i>
+            Tasks
+            <button id="myBtn">Add new task 
+                <i class="uil uil-plus"></i>
+            </button>
+        </h3>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="content-task">
+
+            </tbody>
+        </table>
+        
+        
+        
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2>Add new task</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="title-task">
+                        <label for="title">Title</label>
+                        <input type="text" id="title">
+                    </div>
+                    <div class="desc-task">
+                        <label for="description">description</label>
+                        <textarea name="" id="desc" cols="30" rows="5"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="add">Save</button>
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+    <script src="./main.js"></script>
+</body>
+
+</html>

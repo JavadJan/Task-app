@@ -1,0 +1,234 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border;
+}
+body{
+    font-family: "montserrat", sans-serif;
+}
+#root{
+    min-width: 500px;
+    width: 30%;
+    margin: 100px auto;
+    background-color: #dddddd;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: all 600ms ease-in;
+    /* display: none; */
+    overflow-y: scroll;
+}
+#root .title{
+    margin:0 auto;
+    margin-top: 1.4rem;
+    /* border: 1px solid green; */
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#root .title button{
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.uil-plus{
+  font-size: 20px;
+}
+#root table{
+    width: 95%;
+    margin-top: 10px;
+    border-collapse: collapse;
+    margin-left:10px ;
+    
+}
+#root table tr {
+    background-color: white;
+    border-bottom: 10px solid #ddd;
+    
+}
+button{
+    height: 30px;
+    width: 50px;
+    border: none;
+    background-color: #66bb6a;   
+    cursor: pointer; 
+    border-radius: 5px;
+}
+td{
+    position: relative;
+    padding: 5px;
+    border: none;
+    height: fit-content;
+    margin: 0 auto;
+}
+  td h4{
+    margin:7px auto;
+  }
+
+  td i{
+    font-size: 20px;
+  }
+  .content-cell{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+/* sign check */
+   td input[type="checkbox"]:after {
+    border: 2px solid #fff;
+    border-top: none;
+    border-right: none;
+    content: "";
+    height: 6px;
+    width: 12px;
+    opacity: 0;
+    
+    left: 32%;
+    position: absolute;
+    top: 40%;
+    transform: rotate(-45deg) ;
+  }
+  
+  /* convert checkbox to round */
+   td input[type="checkbox"] {
+    width: 2.2em;
+    height: 2.2em;
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid rgb(166, 164, 164);
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;    
+  }
+
+  /* cover with a clip shape */
+  td input[type="checkbox"]:checked{
+    clip-path: circle(46% at 50% 50%);
+    background-color: green;
+  }
+  
+   td input[type="checkbox"]:checked + label {
+    background-color: #66bb6a;
+    border-color: #66bb6a;
+  }
+  
+   td input[type="checkbox"]:checked:after {
+    opacity: 1;
+  }
+
+/*--------------------------- modal for add to do */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 130px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 40%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 10px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+.modal-body {
+  padding: 5px 16px;
+  display: flex;
+  flex-direction: column;
+}
+.modal-body div {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.modal-body .title-task input{
+  height: 30px;
+  border: 1px solid #dddddd;
+  background-color: #eeeeee;
+  outline: none;
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+.modal-body .desc-task textarea{
+  margin-top: 5px;
+  padding: 5px;
+  background-color: #eeeeee;
+  border-radius: 5px;
+  border: 1px solid #dddddd;
+
+
+}
+.modal-footer {
+  padding: 2px 16px;
+  margin-top: 10px;
+  color: white;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+/* modal for add to do ----------end */
+
+
+
+  
+@media screen and (max-width:600px) {
+    #root{
+        min-width: 90%;
+    }
+  }
