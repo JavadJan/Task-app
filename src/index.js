@@ -37,6 +37,16 @@ let elmIndex
 
 let check
 
+// create a o
+class todo {
+    constructor(id, title, description, checked = false) {
+        this.id = id
+        this.title = title,
+        this.description = description,
+        this.checked = checked
+    }
+}
+
 //get instance from tasks
 let newTask = new task()
 
@@ -88,7 +98,12 @@ check.forEach((e) => {
 //add function to false = update and true = create
 let addd = document.getElementById('add')
 addd.addEventListener('click', async function () {
-    add(createBool, contentTask ,newTask)
+    //select input in modal
+    let title = document.getElementById('title')
+    let desc = document.getElementById('desc')
+    var result = getFields(JSON.parse(localStorage.getItem('tasks')))
+    let newTodo = new todo(Math.max(...result) + 1, title.value, desc.value)
+    add(createBool, contentTask ,newTask ,newTodo)
 })
 
 

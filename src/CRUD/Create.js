@@ -1,24 +1,16 @@
 
-// create a o
-class todo {
-    constructor(id, title, description, checked = false) {
-        this.id = id
-        this.title = title,
-        this.description = description,
-        this.checked = checked
-    }
-}
 
+// newTask => an instance of class Task
+//contentTask => select tbody
+// newTodo => new data
+// createBool => flag to update or create 
 
-function add(createBool , contentTask ,newTask) {
+function add(createBool , contentTask , newTask , newTodo) {
     
     try {
         //createBool == true => for add new task
         //createBool == false => for update task
-        //select input in modal
-        let title = document.getElementById('title')
-        let desc = document.getElementById('desc')
-        var result = getFields(JSON.parse(localStorage.getItem('tasks')))
+        
     
         if (createBool) {
             console.log('add mode')
@@ -27,7 +19,6 @@ function add(createBool , contentTask ,newTask) {
             if (title.value !== '') {
     
                 //invoke method save form task class
-                let newTodo = new todo(Math.max(...result) + 1, title.value, desc.value)
                 newTask.save(newTodo)
     
                 let newRow = contentTask.insertRow(contentTask.length)
