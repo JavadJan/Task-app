@@ -10,19 +10,20 @@ class todo {
 }
 
 
-function add(createBool,newTask , contentTask) {
+function add(createBool , contentTask ,newTask) {
     
-    //createBool == true => for add new task
+    try {
+        //createBool == true => for add new task
         //createBool == false => for update task
         //select input in modal
         let title = document.getElementById('title')
         let desc = document.getElementById('desc')
+        var result = getFields(JSON.parse(localStorage.getItem('tasks')))
     
         if (createBool) {
             console.log('add mode')
             document.getElementById('add').innerText = 'save'
             //get max id and add + 1 to new id in order to create uniq id
-            var result = getFields(JSON.parse(localStorage.getItem('tasks')))
             if (title.value !== '') {
     
                 //invoke method save form task class
@@ -64,6 +65,10 @@ function add(createBool,newTask , contentTask) {
             console.log(idObj , elmIndex , elm.children[0] , elm.children[1])
     
         }
+    } catch (error) {
+        console.log(error.message)  
+    }
+    
 }
 function getFields(input) {
     var output = [];

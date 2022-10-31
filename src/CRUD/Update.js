@@ -4,7 +4,7 @@ function Update(e , i ) {
 
 
 
-    console.log(e.parentElement.parentElement.parentElement.children[0].firstChild.id, e.parentElement.parentElement.parentElement.children, i)
+    console.log(e.parentElement.parentElement.parentElement.children[0].firstChild.id, e.parentElement.parentElement.parentElement,e, i)
 
     //get element from parent
     idObj = e.parentElement.parentElement.parentElement.children[0].firstChild.id

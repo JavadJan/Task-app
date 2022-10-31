@@ -4,7 +4,7 @@ function delet(elm, id , newTask) {
     let data = JSON.parse(localStorage.getItem('tasks'))
     console.log(id, data.findIndex((elm) => elm.id === id))
 
-    
+    console.log(elm.parentElement.parentElement.parentElement)
     //delete from local storage
     let arr = newTask.del(data, id)
     console.log('arrr', arr)

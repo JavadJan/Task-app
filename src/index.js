@@ -1,11 +1,8 @@
 import tasks from './tasks.json'
-import fillTable from "./Read"
-import Update from './Update'
-import delet from './Delete'
-import add from './Create'
-
-console.log(funy(), suny())
-
+import fillTable from "./CRUD/Read"
+import Update from './CRUD/Update'
+import delet from './CRUD/Delete'
+import add from './CRUD/Create'
 
 
 // get data from local storage 
@@ -134,7 +131,7 @@ let newTask = new task()
 //add function to false = update and true = create
 let addd = document.getElementById('add')
 addd.addEventListener('click', async function () {
-    add(createBool, newTask, contentTask)
+    add(createBool, contentTask ,newTask)
 })
 
 
@@ -186,4 +183,3 @@ function getFields(input) {
         output.push(input[i].id);
     return output;
 }
-
