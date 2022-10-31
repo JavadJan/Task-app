@@ -3,9 +3,9 @@ const delet = require('./CRUD/Delete')
 const add = require('./CRUD/Create')
 const fillTable = require('./CRUD/Read')
 const tasks = require('./tasks.json')
-// const tt = require('./getData')
+const task = require('./ClassTask')
 
-// const newTask = new task();
+const newTask = new task();
 
 test('should Create', () => {
 
