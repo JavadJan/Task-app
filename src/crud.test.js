@@ -15,12 +15,18 @@ test('should Create', () => {
     const contentTask = dom.window.document.getElementById("content-task") 
     const createBool = true
 
+    const data ={
+        id:100,
+        title: 'for test',
+        describe:'for description' , 
+        checked: false
+    }
 
-    let result = add(createBool , contentTask ,newTask)
+    let result = add(createBool , contentTask ,newTask , data)
     console.log(result)
-    expect(result).toBe(`<tr><td><input type="checkbox" id="1"></td><td>
-    <h4>Paint the wall</h4>
-    <p>Please paint all the walls in white color</p>
+    expect(result).toEqual(`<tr><td><input type="checkbox" id="1"></td><td>
+    <h4>for test</h4>
+    <p>for description</p>
 </td><td>
 <div class="content-cell">
     <button data-edit="">Edit</button>
