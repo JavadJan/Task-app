@@ -3,6 +3,7 @@ function Update(e , i ) {
     createBool = false
 
 
+
     console.log(e.parentElement.parentElement.parentElement.children[0].firstChild.id, e.parentElement.parentElement.parentElement.children, i)
 
     //get element from parent
@@ -29,7 +30,7 @@ function Update(e , i ) {
     desc.value = objTask[0].description
 
     console.log('update mode')
-    document.getElementById('save').textContent = 'Update'
+    document.getElementById('add').innerText = 'Update'
 }
 
 module.exports=Update

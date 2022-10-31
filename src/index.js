@@ -1,22 +1,14 @@
-import funy from "./funy"   
+import funy from "./funy"
 import tasks from './tasks.json'
 import suny from './suny'
 import fillTable from "./fillTable"
 import Update from './Update'
-console.log(funy() , suny())
+import delet from './Delete'
+import add from './Create'
 
-// create a o
-class todo {
-    constructor(id, title, description, checked = false) {
-        this.id = id
-        this.title = title,
-            this.description = description,
-            this.checked = checked
-    }
-}
+console.log(funy(), suny())
 
-//get instance from todo
-let newTodo = new todo()
+
 
 // get data from local storage 
 if (!localStorage.tasks) {
@@ -51,9 +43,9 @@ let check
 
 //with load the page the task list will fill with array task
 let contentTask = document.getElementById('content-task')
-fillTable(toDoTask , contentTask)
-// console.log(fillTable(toDoTask , contentTask))
+fillTable(toDoTask, contentTask)
 
+//class task
 class task {
     constructor() {
         this.todo = null
@@ -76,6 +68,8 @@ class task {
         localStorage.setItem('tasks', JSON.stringify(result))
         objTask = {}
     }
+
+
     //create
     save(data) {
         let todoList = JSON.parse(localStorage.getItem('tasks'))
@@ -101,18 +95,18 @@ class task {
 //get the edit button that opens the modal
 var edit = document.querySelectorAll('[data-edit]')
 
-edit.forEach((e,i) => {
-    e.addEventListener('click', 
-    async function () {
-        modal.style.display = 'block'
-        Update(e ,i)
-
-    })
+edit.forEach((e, i) => {
+    e.addEventListener('click',
+        async function () {
+            modal.style.display = 'block'
+            createBool = false
+            Update(e, i)
+        })
 })
 
 
 
-//=========================>listen to check input
+//=========================>listen to check task
 check = document.querySelectorAll('input[type=checkbox]')
 check.forEach((e) => {
     e.addEventListener('change', async function () {
@@ -138,66 +132,14 @@ check.forEach((e) => {
 
 //get instance from tasks
 let newTask = new task()
-let add = document.getElementById('add')
-add.addEventListener('click' , async function () {
-    // function add() {
-        //createBool == true => for add new task
-        //createBool == false => for update task
-    
-        //select input in modal
-        let title = document.getElementById('title')
-        let desc = document.getElementById('desc')
-    
-        if (createBool) {
-            console.log('add mode')
-            document.getElementById('add').textContent = 'save'
-    
-    
-            //get max id and add + 1 to new id in order to create uniq id
-            var result = getFields(JSON.parse(localStorage.getItem('tasks')))
-            if (title.value !== '') {
-    
-                //invoke method save form task class
-                newTodo = new todo(Math.max(...result) + 1, title.value, desc.value)
-                newTask.save(newTodo)
-    
-                let newRow = contentTask.insertRow(contentTask.length)
-                // newRow.setAttribute("id", await tasks[i].id);
-                let td0 = newRow.insertCell(0);
-                let td1 = newRow.insertCell(1);
-                let td2 = newRow.insertCell(2);
-    
-                td0.innerHTML = `<input type="checkbox" id=${JSON.parse(localStorage.getItem('tasks')).length}>`
-                td1.innerHTML = `
-                                <h4>${title.value}</h4>
-                                <p>${desc.value}</p>
-                            `
-                td2.innerHTML = `
-                            <div class="content-cell">
-                                <button data-edit>Edit</button>
-                                <button data-del id=${Math.max(...result) + 1}>Delete</button>
-                            </div>
-            
-                            `
-                title.value = ''
-                desc.value = ''
-            }
-        } else {
-    
-            newData = {
-                title: title.value,
-                description: desc.value
-            }
-    
-            newTask.update(newData , idObj)
-            let elm = document.querySelector('tbody').children[elmIndex].children[1]
-            elm.children[0].innerHTML=title.value
-            elm.children[1].innerHTML=desc.value
-            console.log(idObj , elmIndex , elm.children[0] , elm.children[1])
-    
-        }
-    // }
+
+//add function to false = update and true = create
+let addd = document.getElementById('add')
+addd.addEventListener('click', async function () {
+    add(createBool, newTask, contentTask)
 })
+
+
 
 
 
@@ -207,29 +149,13 @@ let del = document.querySelectorAll('[data-del]')
 console.log(del)
 del.forEach((e) => {
     e.addEventListener('click', async function () {
-
-        delet(e, Number(e.id))
+        delet(e, Number(e.id), newTask)
     })
 })
 
-function delet(elm, id) {
 
-    //get data from local storage
-    let data = JSON.parse(localStorage.getItem('tasks'))
-    console.log(id, data.findIndex((elm) => elm.id === id))
 
-    //delete from local storage
-    let arr = newTask.del(data, id)
-    console.log('arrr', arr)
-    localStorage.setItem('tasks', JSON.stringify(arr))
-    //update table
-    elm.parentElement.parentElement.parentElement.remove()
-}
-
-//-------------------------------- open modal 
 // Get the modal
-
-
 // When the user clicks the button, open the modal 
 btnAdd.onclick = function () {
     modal.style.display = "block";
@@ -263,5 +189,3 @@ function getFields(input) {
     return output;
 }
 
-// module.exports = newTask.del;
-// module.exports = getFields;
